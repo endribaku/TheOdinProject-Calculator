@@ -1,8 +1,8 @@
 // operation functions
-function addition(a, b) {return (a + b).toFixed(2);}
-function subtraction(a, b) {return (a - b).toFixed(2);}
-function multiplication(a, b) {return (a * b).toFixed(2);}
-function division(a, b) {return (a / b).toFixed(2);}
+function addition(a, b) {return (a + b);}
+function subtraction(a, b) {return (a - b);}
+function multiplication(a, b) {return (a * b);}
+function division(a, b) {return (a / b);}
 function equals(button) {
     
 }
@@ -64,19 +64,37 @@ equalsButton.addEventListener('click', () => {
 
         switch(selectedOperator) {
             case '+':
-                result.textContent = addition(firstNumber, secondNumber);
+                if(addition(firstNumber, secondNumber) % 1 != 0) {
+                    result.textContent = addition(firstNumber, secondNumber).toFixed(2);
+                }
+                else {
+                    result.textContent = addition(firstNumber, secondNumber);
+                }
                 break;
             case '-':
-                result.textContent = subtraction(firstNumber, secondNumber);
+                if(subtraction(firstNumber, secondNumber) % 1 != 0) {
+                    result.textContent = subtraction(firstNumber, secondNumber).toFixed(2);
+                }
+                else {
+                    result.textContent = subtraction(firstNumber, secondNumber);
+                }
                 break;
             case '*':
-                result.textContent = multiplication(firstNumber, secondNumber);
+                if(multiplication(firstNumber, secondNumber) % 1 != 0) {
+                    result.textContent = multiplication(firstNumber, secondNumber).toFixed(2);
+                } else {
+                    result.textContent = multiplication(firstNumber, secondNumber);
+                }
                 break;
             case '/':
                 if(secondNumber == 0) {
                     result.textContent = 'Error';
                 } else {
-                    result.textContent = division(firstNumber, secondNumber);
+                    if(division(firstNumber, secondNumber) % 1 != 0) {
+                        result.textContent = division(firstNumber, secondNumber).toFixed(2);
+                    } else {
+                        result.textContent = division(firstNumber, secondNumber);
+                    }
                 }
                 break;
         }
